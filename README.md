@@ -65,10 +65,12 @@ signed certificates in command line
 
 To get a OpenSSL certificate we can follow this steps:
 
-1. Generate the private key ```
+1. Generate the private key
+```
 openssl genrsa -out server.key 2048
 ```
-2. Get the certificate```
+2. Get the certificate
+```
 openssl req -new -x509 -sha256 -key server.key -out server.crt -days 3650
 ```
 
@@ -93,3 +95,35 @@ $ curl -kL http://$LOCAL_IP/hello
 ```
 
 The line above expects to be executed on a \*nix OS.
+
+### Web Application
+
+In this section I will refer as a webapp to "Web application" microservice.
+
+I chose Golang as a programming language because I want to learn Golang, I think that is a good language and it was
+created to manage 'massive' concurrent requests.
+I used Golang to create all AWS Lambdas that I had to code since two years ago. Maybe is not the simplest programming
+language for this test but the final code is pretty, simple and readable.
+The second point that scares me is how to build the Golang application, but nowadays you can use a docker with Golang
+to build it.
+
+On the first time I created the TLS part on webapp, is for that reason that on the initial commits there was a certificate
+and a private key. At the end I placed HTTPS part on Web proxy microservice.
+
+On a standard deployments this is correct, but to achieve the GDPR, as far as I know, internal communication between
+microservices has to be encrypted/protected, at least on shared environments like AWS.
+
+
+#### The code
+
+I tried to write a clear and readable code. I want to defend my decision to create a function to handle the client request
+because on this challenge we only need to answer a simple text, if not we will need to create a function to do all the
+stuff there.
+
+#### The response
+
+The text say to answer with JSON format a text and HTTP status 200. And it is what I did. On your example we can also see
+a "new line" (o carry return) character at the end of the "hello world" message. I didn't do it because I think that
+microservices doesn't need extra carry returns and we (the humankind) need to think in our planed and don't waste resources.
+
+
