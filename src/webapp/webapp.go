@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"net"
+	"net/http"
 	"os"
+	"log"
 )
 
 const (
@@ -13,8 +14,17 @@ const (
 
 // Main function
 func main() {
+
+	// Create server and listen on desired port with TLS
+	// The certificate is self signed. A good idea is to use Let's Encrypt certificates.
+	err := http.ListenAndServeTLS(":8080", "cert.pem", "key.pem", nil)
+	log.Fatal(err)
+
+	// Handle specific request
+	http.HandleFunc("/hello", handleRequest);
 }
 
 // Handle incoming requests
-func handleRequest() {
+func handleRequest(w http.ResponseWriter, req *http.Request) {
+		io.WriteString(w, "{ \"hello\": \"world\" }")
 }
