@@ -1,0 +1,18 @@
+version: '2.1'
+
+services:
+  webapp:
+    build:
+      context: .
+      dockerfile: ./src/webapp/Dockerfile
+    ports:
+      - "8080:8080"
+  webproxy:
+    build:
+      context: .
+      dockerfile: ./src/proxy/Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+
+
