@@ -122,8 +122,8 @@ stuff there.
 
 #### The response
 
-The text say to answer with JSON format a text and HTTP status 200. And it is what I did. On your example we can also see
-a "new line" (o carry return) character at the end of the "hello world" message. I didn't do it because I think that
-microservices doesn't need extra carry returns and we (the humankind) need to think in our planed and don't waste resources.
+The challenge asks to answer a JSON format text and HTTP status 200. And it is what I did. On the example we can detect
+a "new line" (or carry return) character at the end of the "hello world" message.
+I didn't do it because I think that microservices doesn't need extra carry returns and we (the humankind) need to think on our planet and don't waste resources.
 
 
