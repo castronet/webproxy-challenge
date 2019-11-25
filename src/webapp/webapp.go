@@ -1,7 +1,6 @@
 package main
 
 import (
-//	"fmt"
 	"net/http"
 	"io"
 	"log"
@@ -17,9 +16,8 @@ func main() {
 	// Set the configuration before start the server.
 	http.HandleFunc("/hello", handleRequest);
 
-	// Create server and listen on desired port with TLS.
-	// The certificate is self signed. A good idea is to use Let's Encrypt certificates.
-	err := http.ListenAndServeTLS(":"+LISTEN_PORT, "server.crt", "server.key", nil)
+	// Create server and listen on desired port.
+	err := http.ListenAndServe(":"+LISTEN_PORT, nil)
 	log.Fatal(err)
 }
 
