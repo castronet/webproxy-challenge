@@ -1,5 +1,6 @@
 # webproxy challenge
 
+You can request valid certificates to a 3rd party company like Let's Encrypt but there is an option to create self signed certificates in command line
 
 OpenSSL certificate generated with:
 Generate the private key
